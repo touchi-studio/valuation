@@ -107,6 +107,8 @@
   .top-nav{
     display:flex;
     flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-left: auto;
     gap: 10px 22px;
     margin-bottom: 0;
   }
@@ -733,7 +735,7 @@
       <div class="brand-logo"><img src="data:image/png;base64,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" alt="TOUCHI 淘器設計"></div>
       <nav class="top-nav">
         <a class="top-nav-btn" href="#top">系統櫃估價系統</a>
-        <a href="#material-section">系統板材質</a>
+        <a href="#material-section">板材材質</a>
         <a href="#process-section">施工過程</a>
         <a href="#cases-section">完工案例</a>
         <a href="#address-section">公司地址</a>
@@ -766,7 +768,7 @@
   </div>
 
   <section class="page-section" id="material-section">
-    <h2 class="section-title">系統板材質</h2>
+    <h2 class="section-title">板材材質</h2>
     <div class="gallery-row gallery-row-4 gallery-row-zoom" id="gallery-material"></div>
   </section>
 
@@ -798,11 +800,11 @@
       <div id="admin-items"></div>
 
       <div class="admin-gallery-wrap">
-        <h3>相簿管理（系統板材質／施工過程／完工案例）</h3>
-        <p class="admin-help">系統板材質可為每張照片加上文字敘述；施工過程、完工案例可一次選取多張圖片上傳（不含文字敘述）；前台會依照排序顯示。</p>
+        <h3>相簿管理（板材材質／施工過程／完工案例）</h3>
+        <p class="admin-help">板材材質可為每張照片加上文字敘述；施工過程、完工案例可一次選取多張圖片上傳（不含文字敘述）；前台會依照排序顯示。</p>
 
         <div class="admin-gallery-section">
-          <div class="admin-toolbar"><h4>系統板材質</h4><button class="admin-primary gallery-add" data-section="material" type="button">＋新增照片</button></div>
+          <div class="admin-toolbar"><h4>板材材質</h4><button class="admin-primary gallery-add" data-section="material" type="button">＋新增照片</button></div>
           <div class="admin-gallery-items" id="admin-gallery-material"></div>
         </div>
 
@@ -878,7 +880,7 @@
 const SUPABASE_URL='https://gbgeypprezbzemnfjrkc.supabase.co';
 const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdiZ2V5cHByZXpiemVtbmZqcmtjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAyNDU0OTksImV4cCI6MjEwNTgyMTQ5OX0.smuiCSRdaU1qxXp0a-Ya_cd4Mm2yCecrxjziFujTmW0';
 const PRODUCT_BUCKET='product-images';
-// 相簿（系統板材質／施工過程／完工案例）用的 Storage bucket 與資料表名稱。
+// 相簿（板材材質／施工過程／完工案例）用的 Storage bucket 與資料表名稱。
 // 若要啟用「後台新增照片＋文字敘述」功能，請在 Supabase 後台建立：
 // 1) Storage bucket：名稱為 gallery-images（設為 Public，權限可比照 product-images）
 // 2) 資料表 gallery_items，欄位：
@@ -890,7 +892,7 @@ const PRODUCT_BUCKET='product-images';
 //      sort_order integer default 0
 const GALLERY_BUCKET='gallery-images';
 const GALLERY_SECTIONS=[
-  {key:'material',label:'系統板材質'},
+  {key:'material',label:'板材材質'},
   {key:'process',label:'施工過程',noCaption:true,multiUpload:true},
   {key:'cases',label:'完工案例',noCaption:true,multiUpload:true}
 ];
