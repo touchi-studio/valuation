@@ -207,8 +207,9 @@
   #ref-popup-global{
     display: none;
     position: fixed;
-    width: 240px;
-    max-width: 72vw;
+    width: 420px;
+    max-width: 90vw;
+    max-height: 80vh;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 16px 38px rgba(0,0,0,.32);
@@ -216,7 +217,7 @@
     background: #fff;
     border: 1px solid var(--line);
   }
-  #ref-popup-global img{ width: 100%; height: auto; display: block; }
+  #ref-popup-global img{ width: 100%; max-height: 80vh; height: auto; object-fit: contain; display: block; }
 
   .cm-row{ margin-bottom: 4px; }
   .cm-hint{
@@ -633,12 +634,12 @@ function bindRefHoverPopups(wrap){
    const src=el.dataset.refImg;if(!src)return;
    img.src=src;img.alt=el.dataset.refAlt||'';
    popup.style.display='block';
-   const r=el.getBoundingClientRect(),popupWidth=popup.offsetWidth||240;
+   const r=el.getBoundingClientRect(),popupWidth=popup.offsetWidth||420;
    let left=r.left;
    if(left+popupWidth>window.innerWidth-8)left=window.innerWidth-popupWidth-8;
    if(left<8)left=8;
    popup.style.left=left+'px';
-   const popupHeight=popup.offsetHeight||160;
+   const popupHeight=popup.offsetHeight||300;
    if(r.top-popupHeight-8>0){popup.style.top=(r.top-popupHeight-8)+'px'}
    else{popup.style.top=(r.bottom+8)+'px'}
  };
