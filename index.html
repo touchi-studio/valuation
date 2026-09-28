@@ -973,7 +973,27 @@
   .logo-row{ padding-top: 4px; padding-bottom: 4px; }
   /* LOGO 圖片再縮小為目前的 80%（約為最初大小的 64%） */
   .brand-logo img{ height: 58px; }
-  @media (max-width:540px){ .brand-logo img{ height: 38px; } }
+  @media (max-width:540px){
+    .logo-row{ padding-left: 12px; }
+    .brand-logo{ flex: 1 1 auto; display: flex; justify-content: flex-start; text-align: left; }
+    .brand-logo a, .brand-logo picture{ margin-right: auto; }
+    .brand-logo img{ height: 30px; width: auto; object-fit: contain; object-position: left center; margin-right: auto; }
+  }
+  /* 網頁版：主標與主標下方敘述文字縮小為 80% */
+  @media (min-width:541px){
+    h1{ font-size: 22px; }
+    header p{ font-size: 16px; }
+  }
+  /* 手機版：主標與下方敘述文字縮小為 80%（網頁版不變） */
+  @media (max-width:540px){
+    h1{ font-size: 17.6px; }
+    header p{ font-size: 12.8px; }
+  }
+  /* 手機版：所有主標與主標下方敘述文字縮小為 80%（網頁版不變） */
+  @media (max-width:540px){
+    h1, .section-title{ font-size: 17.6px; }
+    header p, .section-sub{ font-size: 12.8px; }
+  }
 </style>
 </head>
 <body>
