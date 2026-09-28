@@ -80,12 +80,22 @@
     font-size: 13px;
     font-weight: 700;
     text-decoration: none;
+    border: 0;
+    font-family: inherit;
+    cursor: pointer;
     padding: 7px 14px;
     border-radius: var(--r-pill);
     white-space: nowrap;
     transition: opacity 0.15s var(--ease), transform 0.15s var(--ease);
   }
   .sticky-bar .sticky-nav-btn:hover{ opacity: 0.9; transform: translateY(-1px); }
+  .sticky-bar .sticky-pdf-btn{ background: transparent; color: #F8F5EF; box-shadow: inset 0 0 0 1.5px #F8F5EF; }
+  .sticky-bar .sticky-pdf-btn:disabled{ opacity: .6; pointer-events: none; }
+  @media (max-width:540px){
+    .sticky-bar{ flex-wrap: wrap; gap: 8px; padding-left: 14px; padding-right: 14px; }
+    .sticky-bar .sticky-total-group{ order: -1; flex: 1 0 100%; }
+    .sticky-bar .sticky-nav-btn{ flex: 1 1 0; text-align: center; }
+  }
   .sticky-bar .sticky-total-group{
     flex: 1;
     display: flex;
@@ -834,17 +844,24 @@
   .card .media .placeholder-media{width:70px;height:70px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink-soft);text-align:center;padding:8px}
   @media (max-width:540px){.form-grid{grid-template-columns:1fr}.form-grid label.full{grid-column:auto}.admin-item-grid{grid-template-columns:1fr 1fr}.admin-item-grid .image-field{grid-column:1/-1}}
 
+
+  .inquiry-overlay{position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:20px}
+  .inquiry-overlay.open{display:flex}
+  .inquiry-dialog{position:relative;background:#fff;border-radius:14px;max-width:440px;width:100%;padding:26px 24px 22px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+  .inquiry-title{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:16px}
+  .inquiry-close{position:absolute;top:10px;right:14px;border:0;background:none;font-size:26px;line-height:1;color:var(--ink-soft);cursor:pointer}
 </style>
 </head>
 <body>
 <div class="page">
 
   <div class="sticky-bar" id="sticky-bar">
-    <a class="sticky-nav-btn" href="#top">回到系統櫃估價系統</a>
+    <button class="sticky-nav-btn" id="sticky-submit-btn" type="button">送出估價需求</button>
     <div class="sticky-total-group">
       <span class="sticky-label">目前總金額</span>
       <span class="sticky-value" id="sticky-total">NT$ 0</span>
     </div>
+    <button class="sticky-nav-btn sticky-pdf-btn" id="pdf-btn" type="button">PDF 下載估價單</button>
   </div>
 
   <div id="ref-popup-global"><img id="ref-popup-global-img" src="" alt=""></div>
@@ -891,21 +908,6 @@
 
     <div class="items" id="items"></div>
   <div class="total-bar"><div><div class="label">總計</div><div class="value" id="grand-total">NT$ 0</div><div class="total-note"><div>✅ 包含：標準五金、門片緩衝</div><div>❌ 不含：拆除清運、搬運上樓費、插座移位弱電工程</div></div></div></div>
-  <div class="contact">
-    <div class="contact-label">送出估價需求</div>
-    <div class="customer-form">
-      <div class="form-grid">
-        <label>姓名<input id="cust-name" type="text" placeholder="請輸入姓名" autocomplete="name"></label>
-        <label>電話<input id="cust-phone" type="tel" placeholder="請輸入聯絡電話" autocomplete="tel"></label>
-        <label class="full">施工地點<input id="cust-address" type="text" placeholder="請輸入施工地點" autocomplete="address-line1"></label>
-      </div>
-      <button class="contact-btn submit-btn" id="submit-inquiry" type="button">送出估價需求</button>
-      <div class="form-note" id="submit-note"></div>
-    </div>
-    <div class="contact-buttons">
-      <button class="contact-btn pdf" id="pdf-btn" type="button">PDF 下載估價單</button>
-    </div>
-  </div>
 
   <section class="page-section" id="material-section">
     <h2 class="section-title">板材材質</h2>
@@ -1036,6 +1038,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<div class="inquiry-overlay" id="inquiry-overlay" aria-hidden="true">
+  <div class="inquiry-dialog" role="dialog" aria-modal="true" aria-labelledby="inquiry-title">
+    <button class="inquiry-close" id="inquiry-close" type="button" aria-label="關閉">×</button>
+    <div class="inquiry-title" id="inquiry-title">送出估價需求</div>
+    <div class="customer-form">
+      <div class="form-grid">
+        <label>姓名<input id="cust-name" type="text" placeholder="請輸入姓名" autocomplete="name"></label>
+        <label>電話<input id="cust-phone" type="tel" placeholder="請輸入聯絡電話" autocomplete="tel"></label>
+        <label class="full">施工地點<input id="cust-address" type="text" placeholder="請輸入施工地點" autocomplete="address-line1"></label>
+      </div>
+      <button class="contact-btn submit-btn" id="submit-inquiry" type="button">送出</button>
+      <div class="form-note" id="submit-note"></div>
+    </div>
+  </div>
+</div>
+
 <script>
 // ↓↓↓ 請填入你自己的 Supabase 專案資訊（Supabase 後台 → Project Settings → API）↓↓↓
 const SUPABASE_URL='https://gbgeypprezbzemnfjrkc.supabase.co';
@@ -1121,7 +1139,7 @@ async function loadProducts(){
 }
 function renderItems(){
  const wrap=$('items'), active=products.filter(p=>p.active);
- wrap.innerHTML=active.length?active.map(p=>{const isLen=!p.unit||p.unit==='尺';const qtyPlaceholder=isLen?'尺數':(escapeHtml(p.unit)+'數');const cmRow=isLen?`<div class="row cm-row"><div class="field-row"><input class="cm-input" data-id="${p.id}" type="number" placeholder="長度(cm)" min="0" step="0.1"><span class="suffix">cm</span></div><div class="cm-hint">輸入公分可自動換算尺數（1 尺 = 30cm）</div></div>`:'';return `<div class="card ${p.color||'low'}" data-id="${p.id}"><div class="media">${p.image?`<img src="${p.image}" alt="${escapeHtml(p.name)}">`:'<div class="placeholder-media">尚未設定圖片</div>'}</div><div class="body"><div class="top-row"><h2>${escapeHtml(p.name)}</h2><div class="unit-price">${fmt(p.price)} 元/${escapeHtml(p.unit||'尺')}</div></div>${(p.show_dimensions&&(p.height||p.width))?`<div class="dim-info">${p.height?`高度 ${escapeHtml(p.height)}`:''}${p.height&&p.width?'．':''}${p.width?`深度 ${escapeHtml(p.width)}`:''}</div>`:''}${(p.ref_image&&p.show_ref_image!==false)?`<div class="ref-hover"><span class="ref-hover-label" tabindex="0" data-ref-img="${p.ref_image}" data-ref-alt="${escapeHtml(p.name)}完工參考照">📷 完工參考</span></div>`:''}${cmRow}<div class="row"><div class="field-row"><input class="length-input" data-id="${p.id}" type="number" placeholder="${qtyPlaceholder}" min="0" step="0.1"><span class="suffix">${escapeHtml(p.unit||'尺')}</span></div><div class="subtotal"><div class="label">小計</div><div class="value subtotal-value" id="subtotal-${p.id}">NT$ 0</div></div></div></div></div>`}).join(''):'<div class="contact"><div class="contact-label">目前沒有可估價的櫃體項目。</div></div>';
+ wrap.innerHTML=active.length?active.map(p=>{const isLen=!p.unit||p.unit==='尺';const qtyPlaceholder=isLen?'尺數':(escapeHtml(p.unit)+'數');const cmRow=isLen?`<div class="row cm-row"><div class="field-row"><input class="cm-input" data-id="${p.id}" type="number" placeholder="長度(cm)" min="0" step="0.1"><span class="suffix">cm</span></div></div>`:'';return `<div class="card ${p.color||'low'}" data-id="${p.id}"><div class="media">${p.image?`<img src="${p.image}" alt="${escapeHtml(p.name)}">`:'<div class="placeholder-media">尚未設定圖片</div>'}</div><div class="body"><div class="top-row"><h2>${escapeHtml(p.name)}</h2><div class="unit-price">${fmt(p.price)} 元/${escapeHtml(p.unit||'尺')}</div></div>${(p.show_dimensions&&(p.height||p.width))?`<div class="dim-info">${p.height?`高度 ${escapeHtml(p.height)}`:''}${p.height&&p.width?'．':''}${p.width?`深度 ${escapeHtml(p.width)}`:''}</div>`:''}${(p.ref_image&&p.show_ref_image!==false)?`<div class="ref-hover"><span class="ref-hover-label" tabindex="0" data-ref-img="${p.ref_image}" data-ref-alt="${escapeHtml(p.name)}完工參考照">📷 完工參考</span></div>`:''}${cmRow}<div class="row"><div class="field-row"><input class="length-input" data-id="${p.id}" type="number" placeholder="${qtyPlaceholder}" min="0" step="0.1"><span class="suffix">${escapeHtml(p.unit||'尺')}</span></div><div class="subtotal"><div class="label">小計</div><div class="value subtotal-value" id="subtotal-${p.id}">NT$ 0</div></div></div></div></div>`}).join(''):'<div class="contact"><div class="contact-label">目前沒有可估價的櫃體項目。</div></div>';
  wrap.querySelectorAll('.length-input').forEach(el=>el.addEventListener('input',calc));
  wrap.querySelectorAll('.cm-input').forEach(el=>el.addEventListener('input',()=>syncFromCm(el)));
  bindRefHoverPopups(wrap);
@@ -1289,7 +1307,7 @@ async function submitInquiry(){
   const name=$('cust-name').value.trim();
   const phone=$('cust-phone').value.trim();
   const address=$('cust-address').value.trim();
-  if(!name||!phone||!address){$('submit-note').textContent='請先填寫姓名、電話、施工地點，再送出估價需求。';return}
+  if(!name||!phone||!address){$('submit-note').textContent='請先填寫姓名、電話、施工地點，再送出。';return}
   if(!q.rows.length){$('submit-note').textContent='請至少輸入一項估價項目再送出。';return}
   const text=makeInquiryText({name,phone,address});
   const msg=encodeURIComponent(text);
@@ -1299,15 +1317,19 @@ async function submitInquiry(){
     // 手機：直接開啟 LINE App 內與官方帳號的對話（訊息內容會自動帶入）
     $('submit-note').textContent='已整理估價內容，正在為您開啟與淘器設計 LINE 官方帳號的對話。';
     window.location.href=webUrl;
+    setTimeout(closeInquiryModal,800);
     return;
   }
   // 電腦：LINE 電腦版無法自動帶入訊息，先複製估價內容、跳出提示視窗，再用 line:// 開啟官方帳號 @zlm2014b
   $('submit-note').textContent='已整理估價內容。';
   copyText(text).then(ok=>{
+    closeInquiryModal();
     showLineModal(text,ok);
     setTimeout(()=>{window.location.href='line://ti/p/@zlm2014b'},600);
   });
 }
+function openInquiryModal(){const o=$('inquiry-overlay');$('submit-note').textContent='';o.classList.add('open');o.setAttribute('aria-hidden','false');setTimeout(()=>{const n=$('cust-name');if(n)n.focus()},50)}
+function closeInquiryModal(){const o=$('inquiry-overlay');o.classList.remove('open');o.setAttribute('aria-hidden','true')}
 function showLineModal(text,ok){
   const old=document.getElementById('line-modal');if(old)old.remove();
   const ov=document.createElement('div');
@@ -1594,6 +1616,10 @@ async function adminLogin(){
 async function adminLogout(){if(sb) await sb.auth.signOut();await refreshAdminAuthUI()}
 
 $('submit-inquiry').addEventListener('click',submitInquiry);
+$('sticky-submit-btn').addEventListener('click',openInquiryModal);
+$('inquiry-close').addEventListener('click',closeInquiryModal);
+$('inquiry-overlay').addEventListener('click',e=>{if(e.target.id==='inquiry-overlay')closeInquiryModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeInquiryModal()});
 $('pdf-btn').addEventListener('click',downloadPDF);
 $('lightbox-close').addEventListener('click',closeLightbox);
 $('lightbox-prev').addEventListener('click',()=>lightboxStep(-1));
