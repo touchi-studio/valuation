@@ -951,6 +951,26 @@
   .inquiry-dialog{position:relative;background:#fff;border-radius:14px;max-width:440px;width:100%;padding:26px 24px 22px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
   .inquiry-title{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:16px}
   .inquiry-close{position:absolute;top:10px;right:14px;border:0;background:none;font-size:26px;line-height:1;color:var(--ink-soft);cursor:pointer}
+
+  /* ===== LOGO 背景圖：延伸至整個視窗寬度，且一進網頁就固定於最上方 ===== */
+  body{ overflow-x: clip; padding-top: 0; }
+  .logo-sticky{
+    position: sticky;
+    top: 0;
+    margin-top: 0;
+    padding: 4px 0 6px;
+    background: transparent;
+  }
+  .logo-row, .logo-row.pending{ overflow: visible; border-radius: 0; }
+  .logo-row::before, .logo-row::after{
+    left: calc(50% - 50vw);
+    right: calc(50% - 50vw);
+    top: -4px;
+    bottom: -6px;
+    border-radius: 0;
+  }
+  /* LOGO 列高度縮減約 1/4 */
+  .logo-row{ padding-top: 4px; padding-bottom: 4px; }
 </style>
 </head>
 <body>
