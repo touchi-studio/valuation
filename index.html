@@ -241,6 +241,71 @@
   }
   .top-nav a.top-nav-btn:hover{ color: #F8F5EF; opacity: 0.9; border-bottom: none; }
 
+  /* 手機版：LOGO 右方顯示三條線選單按鈕，點選後下拉連結選單 */
+  .nav-toggle{ display: none; }
+  @media (max-width:540px){
+    .logo-row{
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px 10px 14px;
+      overflow: visible;
+    }
+    .logo-row::before, .logo-row::after{ border-radius: inherit; }
+    .brand-logo{ flex: 1 1 auto; min-width: 0; }
+    .brand-logo img{ height: 60px; }
+    .nav-toggle{
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--r-s);
+      background: rgba(255,255,255,0.9);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .nav-toggle svg{ width: 22px; height: 22px; }
+    .nav-toggle .icon-close{ display: none; }
+    .logo-row.nav-open .nav-toggle .icon-open{ display: none; }
+    .logo-row.nav-open .nav-toggle .icon-close{ display: block; }
+    .top-nav{
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      z-index: 5;
+      min-width: 200px;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 0;
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: var(--r-m);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+    .logo-row.nav-open .top-nav{ display: flex; }
+    .top-nav a, .top-nav a.top-nav-btn{
+      display: block;
+      padding: 14px 18px;
+      border-radius: 0;
+      background: none;
+      color: var(--ink);
+      font-size: 15px;
+      border-bottom: 1px solid var(--line);
+    }
+    .top-nav a.top-nav-btn{ color: var(--high); }
+    .top-nav a:last-child{ border-bottom: 0; }
+  }
+
   h1{
     font-family: 'Noto Serif TC', serif;
     font-weight: 700;
@@ -930,7 +995,11 @@
         }catch(e){}
       })();
       </script>
-      <nav class="top-nav">
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="top-nav-menu">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <nav class="top-nav" id="top-nav-menu">
         <a class="top-nav-btn" href="#top">系統櫃估價系統</a>
         <a href="#material-section">板材材質</a>
         <a href="#process-section">施工過程</a>
@@ -1745,6 +1814,22 @@ document.querySelectorAll('.gallery-bulk-input').forEach(input=>{
     await addGalleryItemsBulk(input.dataset.section,files);
   });
 });
+
+// 手機版三條線選單：點選開關下拉選單；點選連結、點選空白處、按 Esc 或切換到網頁版時自動收合
+(function(){
+  const row=document.querySelector('.logo-row'), btn=$('nav-toggle'), menu=$('top-nav-menu');
+  if(!row||!btn||!menu) return;
+  const setOpen=open=>{
+    row.classList.toggle('nav-open',open);
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    btn.setAttribute('aria-label',open?'關閉選單':'開啟選單');
+  };
+  btn.addEventListener('click',e=>{e.stopPropagation();setOpen(!row.classList.contains('nav-open'))});
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setOpen(false)));
+  document.addEventListener('click',e=>{if(!row.contains(e.target))setOpen(false)});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false)});
+  window.matchMedia('(min-width:541px)').addEventListener('change',e=>{if(e.matches)setOpen(false)});
+})();
 
 // 讓錨點連結／scrollIntoView 捲動時，不會被固定的 LOGO 列遮住
 (function(){
