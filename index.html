@@ -108,14 +108,14 @@
     font-size: 19px;
     font-weight: 700;
   }
-  /* 手機版：目前總金額獨立一列，送出估價需求、PDF 下載各自一列（需放在基礎樣式之後才會生效） */
+  /* 手機版：第一列目前總金額；第二列送出估價需求＋PDF 下載並排（需放在基礎樣式之後才會生效） */
   @media (max-width:540px){
-    .sticky-bar{ flex-direction: column; align-items: stretch; gap: 8px; padding-left: 14px; padding-right: 14px; }
-    .sticky-bar .sticky-total-group{ order: 0; flex: 0 0 auto; width: 100%; }
+    .sticky-bar{ flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px; padding-left: 14px; padding-right: 14px; }
+    .sticky-bar .sticky-total-group{ order: 0; flex: 0 0 100%; width: 100%; }
     #sticky-submit-btn{ order: 1; }
     #pdf-btn{ order: 2; }
-    .sticky-bar .sticky-nav-btn{ flex: 0 0 auto; width: 100%; text-align: center; padding: 10px 14px; font-size: 14px; }
-    body{ padding-bottom: 200px; }
+    .sticky-bar .sticky-nav-btn{ flex: 1 1 0; min-width: 0; text-align: center; padding: 10px 8px; font-size: 14px; }
+    body{ padding-bottom: 150px; }
   }
 
   header{ margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
