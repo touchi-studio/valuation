@@ -159,8 +159,8 @@
   .logo-row::before{ transition: opacity .25s ease; }
   .logo-row.pending::before{ opacity:0; }
   .logo-row.pending .brand-logo img{ visibility:hidden; }
-  .brand-logo{ margin-bottom: 0; }
-  .brand-logo img{ height: 48px; width: auto; display: block; }
+  .brand-logo{ margin-bottom: 0; max-width: 100%; }
+  .brand-logo img{ height: 96px; width: auto; max-width: 100%; object-fit: contain; display: block; }
   @media (min-width:541px){
     .brand-logo img{ height: 76px; }
   }
