@@ -109,12 +109,22 @@
     font-weight: 700;
   }
   /* 排列順序：目前總金額 → 送出估價需求 → PDF 下載估價單（網頁版按鈕靠右，送出在 PDF 前方） */
-  .sticky-bar .sticky-total-group{ order: 0; }
-  #sticky-submit-btn{ order: 1; }
-  #pdf-btn{ order: 2; }
+  .sticky-actions{ display: flex; align-items: center; gap: 12px; flex: 0 0 auto; }
   @media (min-width:541px){
+    /* 黑色底滿版；內容寬度與 LOGO 列（最大 720px）對齊 */
+    .sticky-bar{
+      padding-left: max(20px, calc((100% - 720px) / 2));
+      padding-right: max(20px, calc((100% - 720px) / 2));
+    }
     .sticky-bar .sticky-total-group{ justify-content: flex-start; }
   }
+  @media (min-width:761px){
+    /* 目前總金額置中，按鈕靠右 */
+    .sticky-bar{ display: grid; grid-template-columns: 1fr auto 1fr; }
+    .sticky-bar .sticky-total-group{ grid-column: 2; flex: none; justify-content: center; }
+    .sticky-actions{ grid-column: 3; justify-self: end; }
+  }
+  @media (max-width:540px){ .sticky-actions{ display: contents; } }
   /* 手機版：第一列目前總金額；第二列送出估價需求＋PDF 下載並排（需放在基礎樣式之後才會生效） */
   @media (max-width:540px){
     .sticky-bar{ flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px; padding-left: 14px; padding-right: 14px; }
@@ -882,12 +892,14 @@
 <div class="page">
 
   <div class="sticky-bar" id="sticky-bar">
-    <button class="sticky-nav-btn" id="sticky-submit-btn" type="button">送出估價需求</button>
     <div class="sticky-total-group">
       <span class="sticky-label">目前總金額</span>
       <span class="sticky-value" id="sticky-total">NT$ 0</span>
     </div>
-    <button class="sticky-nav-btn sticky-pdf-btn" id="pdf-btn" type="button">PDF 下載估價單</button>
+    <div class="sticky-actions">
+      <button class="sticky-nav-btn" id="sticky-submit-btn" type="button">送出估價需求</button>
+      <button class="sticky-nav-btn sticky-pdf-btn" id="pdf-btn" type="button">PDF 下載估價單</button>
+    </div>
   </div>
 
   <div id="ref-popup-global"><img id="ref-popup-global-img" src="" alt=""></div>
