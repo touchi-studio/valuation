@@ -91,11 +91,6 @@
   .sticky-bar .sticky-nav-btn:hover{ opacity: 0.9; transform: translateY(-1px); }
   .sticky-bar .sticky-pdf-btn{ background: transparent; color: #F8F5EF; box-shadow: inset 0 0 0 1.5px #F8F5EF; }
   .sticky-bar .sticky-pdf-btn:disabled{ opacity: .6; pointer-events: none; }
-  @media (max-width:540px){
-    .sticky-bar{ flex-wrap: wrap; gap: 8px; padding-left: 14px; padding-right: 14px; }
-    .sticky-bar .sticky-total-group{ order: -1; flex: 1 0 100%; }
-    .sticky-bar .sticky-nav-btn{ flex: 1 1 0; text-align: center; }
-  }
   .sticky-bar .sticky-total-group{
     flex: 1;
     display: flex;
@@ -112,6 +107,15 @@
     font-family: 'Noto Serif TC', serif;
     font-size: 19px;
     font-weight: 700;
+  }
+  /* 手機版：目前總金額獨立一列，送出估價需求、PDF 下載各自一列（需放在基礎樣式之後才會生效） */
+  @media (max-width:540px){
+    .sticky-bar{ flex-direction: column; align-items: stretch; gap: 8px; padding-left: 14px; padding-right: 14px; }
+    .sticky-bar .sticky-total-group{ order: 0; flex: 0 0 auto; width: 100%; }
+    #sticky-submit-btn{ order: 1; }
+    #pdf-btn{ order: 2; }
+    .sticky-bar .sticky-nav-btn{ flex: 0 0 auto; width: 100%; text-align: center; padding: 10px 14px; font-size: 14px; }
+    body{ padding-bottom: 200px; }
   }
 
   header{ margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
