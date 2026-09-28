@@ -819,6 +819,11 @@
   @media (max-width:540px){
     .site-footer .footer-sep{ display:none; }
     .site-footer .footer-line{ display:block; }
+    .site-footer .footer-phone{ display:block; }
+  }
+  @media (max-width:540px){
+    .dim-info .dim-sep{ display:none; }
+    .dim-info .dim-h, .dim-info .dim-w{ display:block; }
   }
   .site-footer{
     margin-top: 60px;
@@ -991,7 +996,7 @@
   </section>
 
   <footer class="site-footer">
-    Copyright © 2015 淘器設計Touchi　0958-399-049<span class="footer-sep">　</span><span class="footer-line">Eric Lai　LINE ID：llaaiiuujj</span>
+    Copyright © 2015 淘器設計Touchi<span class="footer-sep">　</span><span class="footer-phone">0958-399-049</span><span class="footer-sep">　</span><span class="footer-line">Eric Lai　LINE ID：llaaiiuujj</span>
   </footer>
 
   <div id="pdf-report">
@@ -1143,7 +1148,7 @@ async function loadProducts(){
 }
 function renderItems(){
  const wrap=$('items'), active=products.filter(p=>p.active);
- wrap.innerHTML=active.length?active.map(p=>{const isLen=!p.unit||p.unit==='尺';const qtyPlaceholder=isLen?'尺數':(escapeHtml(p.unit)+'數');const cmRow=isLen?`<div class="row cm-row"><div class="field-row"><input class="cm-input" data-id="${p.id}" type="number" placeholder="長度(cm)" min="0" step="0.1"><span class="suffix">cm</span></div></div>`:'';return `<div class="card ${p.color||'low'}" data-id="${p.id}"><div class="media">${p.image?`<img src="${p.image}" alt="${escapeHtml(p.name)}">`:'<div class="placeholder-media">尚未設定圖片</div>'}</div><div class="body"><div class="top-row"><h2>${escapeHtml(p.name)}</h2><div class="unit-price">${fmt(p.price)} 元/${escapeHtml(p.unit||'尺')}</div></div>${(p.show_dimensions&&(p.height||p.width))?`<div class="dim-info">${p.height?`高度 ${escapeHtml(p.height)}`:''}${p.height&&p.width?'．':''}${p.width?`深度 ${escapeHtml(p.width)}`:''}</div>`:''}${(p.ref_image&&p.show_ref_image!==false)?`<div class="ref-hover"><span class="ref-hover-label" tabindex="0" data-ref-img="${p.ref_image}" data-ref-alt="${escapeHtml(p.name)}完工參考照">📷 完工參考</span></div>`:''}${cmRow}<div class="row"><div class="field-row"><input class="length-input" data-id="${p.id}" type="number" placeholder="${qtyPlaceholder}" min="0" step="0.1"><span class="suffix">${escapeHtml(p.unit||'尺')}</span></div><div class="subtotal"><div class="label">小計</div><div class="value subtotal-value" id="subtotal-${p.id}">NT$ 0</div></div></div></div></div>`}).join(''):'<div class="contact"><div class="contact-label">目前沒有可估價的櫃體項目。</div></div>';
+ wrap.innerHTML=active.length?active.map(p=>{const isLen=!p.unit||p.unit==='尺';const qtyPlaceholder=isLen?'尺數':(escapeHtml(p.unit)+'數');const cmRow=isLen?`<div class="row cm-row"><div class="field-row"><input class="cm-input" data-id="${p.id}" type="number" placeholder="長度(cm)" min="0" step="0.1"><span class="suffix">cm</span></div></div>`:'';return `<div class="card ${p.color||'low'}" data-id="${p.id}"><div class="media">${p.image?`<img src="${p.image}" alt="${escapeHtml(p.name)}">`:'<div class="placeholder-media">尚未設定圖片</div>'}</div><div class="body"><div class="top-row"><h2>${escapeHtml(p.name)}</h2><div class="unit-price">${fmt(p.price)} 元/${escapeHtml(p.unit||'尺')}</div></div>${(p.show_dimensions&&(p.height||p.width))?`<div class="dim-info">${p.height?`<span class="dim-h">高度 ${escapeHtml(p.height)}</span>`:''}${p.height&&p.width?'<span class="dim-sep">．</span>':''}${p.width?`<span class="dim-w">深度 ${escapeHtml(p.width)}</span>`:''}</div>`:''}${(p.ref_image&&p.show_ref_image!==false)?`<div class="ref-hover"><span class="ref-hover-label" tabindex="0" data-ref-img="${p.ref_image}" data-ref-alt="${escapeHtml(p.name)}完工參考照">📷 完工參考</span></div>`:''}${cmRow}<div class="row"><div class="field-row"><input class="length-input" data-id="${p.id}" type="number" placeholder="${qtyPlaceholder}" min="0" step="0.1"><span class="suffix">${escapeHtml(p.unit||'尺')}</span></div><div class="subtotal"><div class="label">小計</div><div class="value subtotal-value" id="subtotal-${p.id}">NT$ 0</div></div></div></div></div>`}).join(''):'<div class="contact"><div class="contact-label">目前沒有可估價的櫃體項目。</div></div>';
  wrap.querySelectorAll('.length-input').forEach(el=>el.addEventListener('input',calc));
  wrap.querySelectorAll('.cm-input').forEach(el=>el.addEventListener('input',()=>syncFromCm(el)));
  bindRefHoverPopups(wrap);
