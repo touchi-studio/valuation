@@ -847,9 +847,13 @@ function defaultFurniture(){
   G('bed','雙人床',728,467,1500,1800,90,'#cdd0d3')
 ];}
 
+/* 預設方案：取自「格局裝修方案.json」（使用者匯出的方案） */
+const DEFAULT_PLAN = {"furniture":[{"id":"fmv35lbzr11","type":"counter","name":"廚具上下櫃","cx":4090,"cy":5225,"w":1790,"d":600,"rot":90,"color":"#e9e5de"},{"id":"fmv35lkxf12","type":"counter","name":"廚具上下櫃","cx":3625,"cy":6420,"w":1530,"d":600,"rot":180,"color":"#e9e5de"},{"id":"fmv35cfw51","type":"tvcab","name":"開門TV櫃","cx":5680,"cy":250,"w":2500,"d":500,"rot":0,"color":"#e2cfb4"},{"id":"fmv25vzla2","type":"toilet","name":"馬桶","cx":1620,"cy":350,"w":400,"d":700,"rot":0,"color":"#ffffff"},{"id":"fmv25vzla3","type":"vanity","name":"浴室櫃","cx":300.00000000000006,"cy":1380,"w":840,"d":600,"rot":270,"color":"#eef1f3"},{"id":"fmv25vzla4","type":"wardrobe","name":"開門衣櫃","cx":1047.5,"cy":2175,"w":1975,"d":550,"rot":0,"color":"#fbfaf7"},{"id":"fmv25vzla8","type":"plant","name":"綠植","cx":360,"cy":6350,"w":500,"d":500,"rot":0,"color":"#a9c39b"},{"id":"fmv25vzla10","type":"fridge","name":"冰箱","cx":2520,"cy":6350,"w":600,"d":600,"rot":180,"color":"#dfe4e8"},{"id":"fmv25vzla11","type":"stove","name":"燃氣灶","cx":3350,"cy":6455,"w":790,"d":530,"rot":180,"color":"#dcdcdc"},{"id":"fmv25vzla12","type":"ksink","name":"水槽","cx":4080,"cy":4820,"w":850,"d":440,"rot":90,"color":"#e1e6ea"},{"id":"fmv25vzla19","type":"chair","name":"餐椅","cx":3940,"cy":2460,"w":450,"d":480,"rot":0,"color":"#cfc6b8"},{"id":"fmv25vzla20","type":"chair","name":"餐椅","cx":3430,"cy":2460,"w":450,"d":480,"rot":0,"color":"#cfc6b8"},{"id":"fmv25vzla21","type":"wardrobe","name":"開門衣櫃","cx":5805,"cy":3045,"w":2610,"d":600,"rot":0,"color":"#fbfaf7"},{"id":"fmv282sj48","type":"semicab","name":"開門半高櫃","cx":4410,"cy":200,"w":1000,"d":400,"rot":0,"color":"#efe6d8"},{"id":"fmv283vh810","type":"bed","name":"雙人床 1.5m","cx":6110,"cy":4890,"w":1500,"d":2000,"rot":90,"color":"#d8c7dc"},{"id":"fmv35cr982","type":"wallcab","name":"開門吊櫃","cx":4410,"cy":200,"w":1000,"d":400,"rot":0,"color":"#efe6d8","z":1700},{"id":"fmv35di4s3","type":"tv","name":"65 寸電視","cx":5840,"cy":110,"w":1450,"d":80,"rot":180,"color":"#1d1d1f"},{"id":"fmv35dqjs4","type":"sofa","name":"三人沙發","cx":5600,"cy":2090,"w":2400,"d":900,"rot":180,"color":"#b7c4b0"},{"id":"fmv35dxgq5","type":"sidetable","name":"邊幾","cx":6290,"cy":1320,"w":500,"d":500,"rot":0,"color":"#d9c3a3"},{"id":"fmv35eqlz6","type":"shower5","name":"五角淋浴間","cx":600,"cy":475,"w":1200,"d":950,"rot":0,"color":"#e4edf2"},{"id":"fmv35fapp7","type":"bed","name":"單人床","cx":1000.0000000000001,"cy":4200,"w":1200,"d":2000,"rot":270,"color":"#e8d5b5"},{"id":"fmv35hwti9","type":"table","name":"餐桌","cx":3690,"cy":3025,"w":1400,"d":800,"rot":0,"color":"#e2cfb4"},{"id":"fmv35jjah10","type":"washer","name":"洗衣機","cx":390,"cy":5300,"w":600,"d":600,"rot":270,"color":"#e6ebee"},{"id":"fmv35maqw13","type":"chair","name":"椅子","cx":6230,"cy":6090,"w":450,"d":480,"rot":270,"color":"#cfc6b8"},{"id":"fmv37jt464","type":"curtain","name":"布簾","cx":7020,"cy":1312.5,"w":2625,"d":150,"rot":90,"color":"#e8dfd0"},{"id":"fmv37koee5","type":"dimroll","name":"調光捲簾","cx":40.000000000000036,"cy":3050,"w":1130,"d":80,"rot":90,"color":"#e6e2da","z":400},{"id":"fmv37l6526","type":"honeycomb","name":"蜂巢簾","cx":5890,"cy":6620,"w":2020,"d":80,"rot":0,"color":"#e9e2d4","z":400},{"id":"fmv37tfi87","type":"tallcab","name":"開門高櫃","cx":2360,"cy":500.00000000000006,"w":1000,"d":450,"rot":270,"color":"#efe6d8"},{"id":"fmv39011p1","type":"studydesk","name":"書桌/化妝桌","cx":6785,"cy":6105,"w":840,"d":630,"rot":90,"color":"#efe6d8"}],"rooms":{"bed2":{"name":"次臥室","mat":"wood"},"rmv35ir9010":{"name":"陽台","mat":"tile3060"},"rmv37h8qk3":{"name":"廁所","mat":"tile3060"},"rmv37heh95":{"name":"主臥室","mat":"wood"},"rmv37hhrv7":{"name":"客廳","mat":"wood"}},"demolished":[],"measures":[],"price":{"tall":3600,"low":2600},"layout":{"walls":[{"id":"wmv25w3wv2","x0":-170,"y0":4860,"x1":-70,"y1":6825,"k":"low","ie":"x1"},{"id":"wmv25w3wv1","x0":-170,"y0":-150,"x1":0,"y1":1850,"k":"e"},{"id":"wmv37h5h62","x0":-170,"y0":1850,"x1":0,"y1":4860,"k":"e"},{"id":"wmv35eqlz7","x0":-70,"y0":-150,"x1":2085,"y1":0,"k":"e","ie":"y1"},{"id":"wmv37h9gk4","x0":2085,"y0":-150,"x1":7280,"y1":0,"k":"e","ie":"y1"},{"id":"w2","x0":7110,"y0":0,"x1":7260,"y1":2685,"k":"e","ie":"x0"},{"id":"wmv37heug6","x0":7110,"y0":2685,"x1":7260,"y1":6870,"k":"e","ie":"x0"},{"id":"w3","x0":-170,"y0":6760,"x1":2080,"y1":6860,"k":"low","ie":"y0"},{"id":"wmv25w3wv7","x0":2035,"y0":6720,"x1":4445,"y1":6870,"k":"e","ie":"y0"},{"id":"wmv37hi7o8","x0":4445,"y0":6720,"x1":7185,"y1":6870,"k":"e","ie":"y0"},{"id":"w4","x0":2035,"y0":0,"x1":2135,"y1":1850,"k":"n","ie":"x0"},{"id":"wmv35gj9d9","x0":2035,"y0":1850,"x1":2135,"y1":4860,"k":"n","ie":"x0"},{"id":"wmv281eq22","x0":1985,"y0":4860,"x1":2135,"y1":6860,"k":"e","ie":"x1"},{"id":"w5","x0":0,"y0":1800,"x1":2040,"y1":1900,"k":"n","ie":"y0"},{"id":"w6","x0":-170,"y0":4800,"x1":2135,"y1":4950,"k":"e","ie":"y0"},{"id":"w10","x0":4390,"y0":2685,"x1":4500,"y1":6720,"k":"n"},{"id":"w11","x0":4390,"y0":2625,"x1":7110,"y1":2745,"k":"n"}],"doors":[{"id":"d0","name":"入戶門","rect":[2675,-150,3855,0],"flip":false,"side":1,"entry":true},{"id":"d1","name":"衛浴門","rect":[2035,990,2135,1740],"flip":true,"side":-1},{"id":"d2","name":"臥室門","rect":[2035,2515,2135,3325],"flip":false,"side":-1},{"id":"d5","name":"主臥門","rect":[4390,3490,4500,4330],"flip":false,"side":1},{"id":"dmv35kp9i14","name":"陽台門","rect":[1985,5050,2135,5950],"flip":false,"side":-1,"glass":true}],"slides":[],"wins":[{"id":"x0","rect":[7110,375,7280,2460],"sill":450},{"id":"x1","rect":[5010,6720,6815,6890],"sill":450},{"id":"xmv37iqiy9","rect":[-170,2615,0,3515],"sill":450}],"arches":[],"rooms":[{"auto":true,"id":"bed2","name":"次臥室","poly":[[0,1900],[2035,1900],[2035,4800],[0,4800]],"mat":"wood","at":[1018,3350]},{"id":"rmv35ir9010","name":"房間 2","poly":[[-70,4950],[1985,4950],[1985,6760],[-70,6760]],"mat":"wood","auto":true,"at":[958,5855]},{"id":"rmv37heh95","name":"房間 3","poly":[[4500,2745],[7110,2745],[7110,6720],[4500,6720]],"mat":"wood","auto":true,"at":[5805,4733]},{"id":"rmv37hhrv7","name":"房間 4","poly":[[2135,0],[7110,0],[7110,2625],[4390,2625],[4390,6720],[2135,6720]],"mat":"wood","auto":true,"at":[4156,3150]},{"id":"rmv37h8qk3","name":"房間 1","poly":[[0,0],[2035,0],[2035,1800],[0,1800]],"mat":"wood","auto":true,"at":[1018,900]}],"lostRooms":[]}};
+const clonePlan = () => JSON.parse(JSON.stringify(DEFAULT_PLAN));
 function defaultState(){
-  const layout = defaultLayout(), rooms = {}; layout.rooms.forEach(r => rooms[r.id] = {name:r.name, mat:r.mat});
-  return {furniture:defaultFurniture(), rooms, demolished:[], measures:[], price:{tall:3600, low:2600}, layout};
+  const s = clonePlan();
+  s.demolished = s.demolished || []; s.measures = s.measures || []; s.price = s.price || {tall:3600, low:2600};
+  return fixState(s);
 }
 
 const STORE = 'huxing-design-v5';
@@ -861,7 +865,7 @@ function fixState(s){
   s.rooms = s.rooms || {};
   { const RN = {'開門電視櫃':'開門TV櫃','開放電視櫃':'開放TV櫃','櫥櫃檯面':'廚具上下櫃'}; (s.furniture || []).forEach(f => { if (RN[f.name]) f.name = RN[f.name]; }); }
   s.measures = s.measures || []; s.measures.forEach(m => { if (!m.id) m.id = uid(); });
-  if (!s.layout || !s.layout.walls){ s.layout = defaultLayout(); (s.demolished || []).forEach(id => s.layout.walls = s.layout.walls.filter(w => w.id !== id)); }
+  if (!s.layout || !s.layout.walls){ s.layout = clonePlan().layout; (s.demolished || []).forEach(id => s.layout.walls = s.layout.walls.filter(w => w.id !== id)); }
   ['doors','slides','wins','arches','rooms'].forEach(k => s.layout[k] = s.layout[k] || []); s.layout.lostRooms = []; s.layout.slides = s.layout.slides.filter(o => { if (o.kind !== 'tri') return true; s.layout.doors.push({id:o.id, name:'陽台門', rect:o.rect, ht:o.ht, flip:false, side:o.side ?? -1, glass:true}); return false; }); { const MM = {walnut:'wood', carpet:'wood', tile800:'tile8080', marble:'tile8080', terrazzo:'tile8080', tile600:'tile3060', antislip:'tile3060'}, fx = r => { if (!r) return; if (MM[r.mat]) r.mat = MM[r.mat]; else if (!MATS[r.mat]) r.mat = 'wood'; }; Object.values(s.rooms).forEach(fx); s.layout.rooms.forEach(fx); } s.layout.walls = mergeWalls(splitWalls(s.layout.walls)).walls; s.furniture = (s.furniture || []).filter(f => f.type !== 'glasscab'); s.furniture.forEach(f => { if (f.type === 'slidewardrobe') f.d = 650; if (isFixedD(f) || RANGE_D[f.type]) f.d = clampD(f, f.d || 100); if (f.type === 'pillar') f.color = '#75716c'; if (f.name === '淋浴房') f.name = '淋浴間'; if (f.name === '蒸烤箱高櫃') f.name = '電器櫃'; if (f.name === '島台') f.name = '中島'; }); s.demolished = []; s.measures = s.measures || []; s.price = Object.assign({tall:3600, low:2600}, s.price || {});
   return s;
 }
@@ -1651,10 +1655,10 @@ function quoteText(q, c){
   if (q.cabs.length) L.push('', '櫃體價格備註', ...CAB_NOTES.map(t => '*' + t));
   return L.join('\n');
 }
-function quotePages(q, c, extra = {}){
+function quotePages(q, c){
   const W = 900, PH = 1274, M = 56, F = '"Noto Sans TC","PingFang TC","Microsoft JhengHei","Heiti TC",sans-serif', ACC = '#b5653a', MUT = '#8a8174';
   const rows = q.cabs.reduce((t, g) => t + g.items.length + 1, 0) + q.fl.length + q.cu.length + 24;
-  const cv = document.createElement('canvas'); cv.width = W; cv.height = PH * Math.max(1, Math.ceil((rows*40 + 1300)/PH));
+  const cv = document.createElement('canvas'); cv.width = W; cv.height = PH * Math.max(1, Math.ceil((rows*40 + 700)/PH));
   const x = cv.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, cv.width, cv.height);
   const cName = M, cSize = M + (W-2*M)*.66, cAmt = W - M; let y = M;
   const txt = (s, px, py, o = {}) => { x.font = `${o.w || 400} ${o.s || 22}px ${F}`; x.fillStyle = o.c || '#222'; x.textAlign = o.a || 'left'; x.textBaseline = 'alphabetic'; x.fillText(s, px, py); };
@@ -1663,21 +1667,17 @@ function quotePages(q, c, extra = {}){
   const head = (t1, t2) => { need(80); y += 22; txt(t1, cName, y, {w:700, s:24, c:ACC}); y += 14; rule(y); y += 28; txt('名稱', cName, y, {s:17, c:MUT}); txt(t2, cSize, y, {s:17, c:MUT, a:'right'}); txt('金額', cAmt, y, {s:17, c:MUT, a:'right'}); y += 12; rule(y, '#eee6d9'); y += 30; };
   const row = (a, b, amt, ind) => { need(40); txt(a, cName + (ind ? 18 : 0), y, {s:21}); txt(b, cSize, y, {s:21, a:'right'}); txt(amt == null ? '待報價' : money0(amt), cAmt, y, {s:21, a:'right'}); y += 12; rule(y, '#f0eadf'); y += 28; };
   const sub = (label, v) => { need(50); y += 6; txt(label + '　' + money0(v), cAmt, y + 6, {w:700, s:23, c:ACC, a:'right'}); y += 34; };
-  const lg = extra.logo;
-  if (lg){ const lh = 70, lw = lh*lg.naturalWidth/lg.naturalHeight; x.drawImage(lg, M, y, lw, lh); txt(new Date().toLocaleDateString('zh-TW'), W-M, y + 44, {s:20, c:MUT, a:'right'}); y += lh + 44; }
-  else { txt('淘器設計 TOUCHI', M, y + 26, {w:700, s:28}); txt(new Date().toLocaleDateString('zh-TW'), W-M, y + 26, {s:20, c:MUT, a:'right'}); y += 72; }
+  txt('淘器設計 TOUCHI', M, y + 26, {w:700, s:28}); txt(new Date().toLocaleDateString('zh-TW'), W-M, y + 26, {s:20, c:MUT, a:'right'}); y += 72;
   txt('全屋訂製估價單', M, y, {w:700, s:44}); y += 30; rule(y, ACC); y += 38;
-  if (extra.plan){ const pi = extra.plan, bw = W - 2*M, bh = 520, k = Math.min(bw/pi.naturalWidth, bh/pi.naturalHeight), dw = pi.naturalWidth*k, dh = pi.naturalHeight*k;
-    x.fillStyle = '#f7f4ee'; x.fillRect(M, y, bw, dh + 20); x.drawImage(pi, M + (bw-dw)/2, y + 10, dw, dh); x.strokeStyle = '#e3dccf'; x.lineWidth = 1.5; x.strokeRect(M, y, bw, dh + 20); y += dh + 54; }
   [['姓名', c && c.name], ['電話', c && c.phone], ['施工地點', c && c.place]].forEach(([k, v]) => { if (!v) return; txt(k, M, y, {s:20, c:MUT}); txt(v, M + 110, y, {s:21}); y += 34; });
   if (c && c.name) y += 6;
   if (q.cabs.length){ head('櫃體估價', '長 × 寬 (cm)');
-    q.cabs.forEach(g => { need(80); txt(g.room, cName, y, {w:700, s:22}); y += 38; g.items.forEach(i => row(i.name, i.size, i.amt, true)); }); sub('櫃體合計', q.cabT);
-    need(30 + CAB_NOTES.length*26); txt('櫃體價格備註', M, y, {w:700, s:17, c:MUT}); y += 26; CAB_NOTES.forEach(t => { txt('* ' + t, M, y, {s:16, c:MUT}); y += 26; }); y += 4; }
+    q.cabs.forEach(g => { need(80); txt(g.room, cName, y, {w:700, s:22}); y += 38; g.items.forEach(i => row(i.name, i.size, i.amt, true)); }); sub('櫃體合計', q.cabT); }
   if (q.fl.length){ head('地板估價', '面積 (坪)'); q.fl.forEach(i => row(i.name, i.size, i.amt)); sub('地坪合計', q.flT); need(30 + FLOOR_NOTES.length*26); txt('地板價格備註', M, y, {w:700, s:17, c:MUT}); y += 26; FLOOR_NOTES.forEach(t => { txt('* ' + t, M, y, {s:16, c:MUT}); y += 26; }); y += 4; }
   if (q.cu.length){ head('窗簾估價', '寬 × 長 (cm)'); q.cu.forEach(i => row(i.name, i.size, i.amt)); sub('窗簾合計', q.cuT); need(40); txt(PRICE_NOTE, M, y, {s:16, c:MUT}); y += 30; }
   need(120); y += 18; rule(y, ACC); y += 46; txt('總估價　' + money0(q.total), cAmt, y, {w:700, s:34, c:ACC, a:'right'}); y += 50;
-  y += 4; need(70); txt('聯絡電話：0958399049　聯絡信箱：' + QUOTE_MAIL, M, y, {s:16, c:MUT}); y += 28; txt('LINE ID：' + LINE_ID, M, y, {s:16, c:MUT});
+  if (q.cabs.length){ need(60 + CAB_NOTES.length*26); txt('櫃體價格備註', M, y, {w:700, s:17, c:MUT}); y += 26; CAB_NOTES.forEach(t => { txt('* ' + t, M, y, {s:16, c:MUT}); y += 26; }); }
+  y += 4; need(40); txt('聯絡信箱：' + QUOTE_MAIL + '　LINE ID：' + LINE_ID + '　本估價僅供估算參考，實際以現場丈量為準。', M, y, {s:16, c:MUT});
   const n = Math.ceil((y + M)/PH), out = [];
   for (let p = 0; p < n; p++){
     const pc = document.createElement('canvas'); pc.width = W; pc.height = PH; const g = pc.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, W, PH);
@@ -1703,22 +1703,10 @@ function makePDF(jp){
 }
 const CUST_KEY = 'taoqi_quote_cust';
 const loadCust = () => { try { return JSON.parse(localStorage.getItem(CUST_KEY)) || {}; } catch (e) { return {}; } };
-function planImage(){   // 把目前平面圖轉成圖片（與「匯出 PNG」同一套畫法，去掉選取框與格線）
-  return new Promise(res => { try {
-    updBounds(); const clone = svg.cloneNode(true), W = 1600, H = Math.round(W*BOUNDS.h/BOUNDS.w);
-    clone.setAttribute('viewBox', `${BOUNDS.x} ${BOUNDS.y} ${BOUNDS.w} ${BOUNDS.h}`); clone.setAttribute('width', W); clone.setAttribute('height', H);
-    const gs = clone.querySelector('#gSel'); if (gs) gs.innerHTML = '';
-    const gg = clone.querySelector('#gGrid'); if (gg) gg.innerHTML = '<rect x="-20000" y="-20000" width="55000" height="55000" fill="#f7f4ee"/>';
-    const img = new Image(); img.onload = () => res(img); img.onerror = () => res(null);
-    img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(new XMLSerializer().serializeToString(clone));
-    setTimeout(() => res(null), 4000);
-  } catch (e) { res(null); } });
-}
-const quoteAssets = async () => { const lg = document.querySelector('#siteLogo img'); return {logo:lg && lg.complete && lg.naturalWidth ? lg : null, plan:await planImage()}; };
-async function downloadQuote(c){
+function downloadQuote(c){
   const q = quoteData(); if (q.empty) return toast('目前沒有可估價的項目');
   const d = new Date(), ymd = d.getFullYear() + String(d.getMonth()+1).padStart(2, '0') + String(d.getDate()).padStart(2, '0');
-  download(`淘器設計估價單_${ymd}.pdf`, makePDF(quotePages(q, c || {}, await quoteAssets()))); if (!c) toast('估價單已下載');
+  download(`淘器設計估價單_${ymd}.pdf`, makePDF(quotePages(q, c || {}))); if (!c) toast('估價單已下載');
 }
 async function copyText(t){
   try { await navigator.clipboard.writeText(t); return true; }
